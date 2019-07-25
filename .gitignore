@@ -59,6 +59,6 @@ typings/
 
 # next.js build output
 .next
-
-node_modules/
+ToDo Server/node_modules/
+ToDo View/node_modules/
 config/db.js
