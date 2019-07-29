@@ -1,0 +1,59 @@
+import {
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  UPDATE_ITEM,
+  ITEMS_LOADING,
+  LOGIN_SUCCESS,
+  LOGOUT_SUCCESS
+} from '../actions/types';
+
+
+const initialState = {
+  items: [],
+  loading: false,
+  loadItems: false
+};
+
+export default function(state = initialState, action) {
+  switch (action.type) {
+    case GET_ITEMS:
+      return {
+        ...state,
+        items: action.payload,
+        loading: false
+      };
+    case DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter(item => item._id !== action.payload)
+      };
+    case ADD_ITEM:
+      return {
+        ...state,
+        items: [action.payload, ...state.items]
+      };
+      case UPDATE_ITEM:
+      return {
+        ...state,
+        items: state.items.map(item => item._id === action.payload.id ? action.payload : item )
+      }
+    case ITEMS_LOADING:
+      return {
+        ...state,
+        loading: true,
+        loadItems: false
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        loadItems: true
+      }
+    case LOGOUT_SUCCESS: 
+    return {
+      ...initialState
+    }
+    default:
+      return state;
+  }
+}
