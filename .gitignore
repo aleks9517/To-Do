@@ -61,4 +61,9 @@ typings/
 .next
 ToDo Server/node_modules/
 ToDo View/node_modules/
-config/db.js
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
