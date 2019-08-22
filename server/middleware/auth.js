@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 function auth(req, res, next) {
-  const token = req.header('x-auth-token');
+  const token = req.cookies.token || req.header('x-auth-token');
 
   // Check for token
   if (!token)
@@ -13,7 +13,7 @@ function auth(req, res, next) {
     // Add user from payload
     req.user = decoded;
     next();
-  } catch (e) {
+  } catch(e) {
     res.status(400).json({ msg: 'Token is not valid' });
   }
 }

@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import RegisterModal from './auth/RegisterModal';
 import LoginModal from './auth/LoginModal';
 import Logout from './auth/Logout';
+import Google from './auth/Google';
 
 class AppNavbar extends Component {
   state = {
@@ -52,6 +53,9 @@ class AppNavbar extends Component {
         </NavItem>
         <NavItem>
           <LoginModal />
+        </NavItem>
+        <NavItem>
+          <Google />
         </NavItem>
       </Fragment>
     );

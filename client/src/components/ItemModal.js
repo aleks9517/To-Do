@@ -45,9 +45,9 @@ class ItemModal extends Component {
         name: this.state.name,
         description: this.state.description
       };
-
+      const localValue = localStorage.getItem('token');
       // Add item via addItem action
-      this.props.addItem(newItem);
+      this.props.addItem(newItem, localValue);
       this.setState({
         name:'',
         description:'',

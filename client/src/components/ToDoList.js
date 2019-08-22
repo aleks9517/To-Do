@@ -39,7 +39,7 @@ class ToDoList extends Component {
     this.props.getItems();
   }
 
-  onDeleteClick = id => {
+  onDeleteClick = (id) => {
     this.props.deleteItem(id);
   };
 
@@ -156,7 +156,4 @@ const mapStateToProps = state => ({
   loadItems: state.todoItems.loadItems
 });
 
-export default connect(
-  mapStateToProps,
-  { getItems, deleteItem, updateItem }
-)(ToDoList);
+export default connect(mapStateToProps, { getItems, deleteItem, updateItem })(ToDoList);

@@ -12,7 +12,7 @@ export class Logout extends Component {
   render() {
     return (
       <Fragment>
-        <NavLink onClick={this.props.logout} href='#'>
+        <NavLink onClick={this.props.logout} href='http://localhost:5000/api/google/logout'>
           Logout
         </NavLink>
       </Fragment>
