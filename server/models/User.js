@@ -24,6 +24,12 @@ const UserSchema = new Schema({
   }
 });
 
+UserSchema.methods.hashPassword = async function(password) {
+  const salt = await bcrypt.genSalt(10);
+  const hash = await bcrypt.hash(password, salt);
+  return hash;
+};
+
 UserSchema.methods.validatePassword = function(password, user) {
     const isMatch = bcrypt.compare(password, user.password);   
     return isMatch;

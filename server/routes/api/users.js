@@ -26,9 +26,7 @@ router.post('/', async (req, res) => {
     });
 
     // Create salt & hash
-    const salt = await bcrypt.genSalt(10);
-
-    newUser.password = await bcrypt.hash(newUser.password, salt);
+    newUser.password = await newUser.hashPassword(newUser.password);
 
     await newUser.save();
 
