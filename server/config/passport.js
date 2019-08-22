@@ -7,13 +7,16 @@ const Users = mongoose.model('user');
 passport.use(new LocalStrategy({
   usernameField: 'email[email]',
   passwordField: 'password[password]',
-}, (email, password, done) => {
-  Users.findOne({ email })
-    .then((user) => {
-      if(!user || !user.validatePassword(password, user)) {
-        return done(null, false, { errors: { 'email or password': 'is invalid' } });
-      }
+}, async (email, password, done) => {
+  try{
+    let user = await Users.findOne({ email });
+    if(!user || !user.validatePassword(password, user)) {
+      return done(null, false, { errors: { 'email or password': 'is invalid' } });
+    }
 
-      return done(null, user);
-    }).catch(done);
-}));
+    return done(null, user);
+    } catch(err) {
+      return done(err);
+    }
+  })
+);
